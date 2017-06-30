@@ -32,6 +32,8 @@ ActiveRecord::Schema.define(version: 20170626185240) do
 
   create_table "shows", force: :cascade do |t|
     t.string "name"
+    t.string "image"
+    t.integer "tvmaze_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
