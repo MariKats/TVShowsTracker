@@ -31,6 +31,6 @@ class Api::V1::ShowsController < ApplicationController
   private
 
   def show_params
-    params.require(:show).permit(:name, :tvmaze_id, :image, :seasons)
+    params.require(:show).permit(:name, :tvmaze_id, :image, :seasons_attributes=>[:id, :number, :show_id, :number_of_episodes])
   end
 end
