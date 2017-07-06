@@ -10,7 +10,7 @@ class Api::V1::EpisodesController < ApplicationController
   end
 
   def create
-    episode = Episode.find_or_create_by(episode_params)
+    episode = Episode.find_or_create_by(season_id: episode_params[:season_id], season_number: episode_params[:number], name: episode_params[:name], number: episode_params[:number])
     render json: episode
   end
 
