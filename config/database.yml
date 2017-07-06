@@ -83,3 +83,5 @@ production:
   database: seriestracker_api_production
   username: seriestracker_api
   password: <%= ENV['SERIESTRACKER_API_DATABASE_PASSWORD'] %>
+
+  
