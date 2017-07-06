@@ -25,17 +25,16 @@ class Api::V1::ShowsController < ApplicationController
   def destroy
     show = Show.find(params[:id])
     show.destroy
-    seasons = Season.where(show_id: show.id)
-
+    show.seasons.each {|s| s.destroy }
     season_ids = []
-    seasons.each { |season|
+
+    show.seasons.each { |season|
       season_ids.push(season.id)
-      season.destroy
     }
     episodes = []
     season_ids.each {|i| episodes.push(Episode.where(season_id: i))}
     episodes.flatten.each{|e| e.destroy}
-    
+
     render json: show
   end
 
@@ -43,7 +42,7 @@ class Api::V1::ShowsController < ApplicationController
 
   def show_params
     params.require(:show).permit(:name, :tvmaze_id, :image,
-    :seasons_attributes=>[:id, :number, :show_id, :number_of_episodes,
-      :episodes_attributes=>[:id, :season_id, :season_number, :number, :name]])
+    :seasons_attributes=>[:id, :number, :show_id, :number_of_episodes],
+    :episodes_attributes=>[:id, :season_id, :season_number, :number, :name])
   end
 end
