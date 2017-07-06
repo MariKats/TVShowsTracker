@@ -13,7 +13,7 @@
 ActiveRecord::Schema.define(version: 20170626185240) do
 
   # These are extensions that must be enabled in order to support this database
-  enable_extension "plpgsql"
+  # enable_extension "plpgsql"
 
   create_table "episodes", force: :cascade do |t|
     t.integer "season_id"
@@ -37,7 +37,6 @@ ActiveRecord::Schema.define(version: 20170626185240) do
     t.string "name"
     t.string "image"
     t.integer "tvmaze_id"
-    t.integer "rating"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
