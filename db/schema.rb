@@ -10,10 +10,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170626184051) do
+ActiveRecord::Schema.define(version: 20170626185240) do
 
   # These are extensions that must be enabled in order to support this database
-  enable_extension "plpgsql"
+  # enable_extension "plpgsql"
 
   create_table "episodes", force: :cascade do |t|
     t.integer "season_id"
@@ -21,6 +21,36 @@ ActiveRecord::Schema.define(version: 20170626184051) do
     t.integer "number"
     t.string "name"
     t.boolean "watched", default: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "seasons", force: :cascade do |t|
+    t.integer "show_id"
+    t.integer "number"
+    t.integer "number_of_episodes"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "shows", force: :cascade do |t|
+    t.string "name"
+    t.string "image"
+    t.integer "tvmaze_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "user_shows", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "show_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "users", force: :cascade do |t|
+    t.string "username"
+    t.string "password_digest"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
