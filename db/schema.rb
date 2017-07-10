@@ -37,7 +37,7 @@ ActiveRecord::Schema.define(version: 20170626185240) do
     t.string "name"
     t.string "image"
     t.integer "tvmaze_id"
-    t.integer "rating"
+    t.integer "rating", default: 0
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

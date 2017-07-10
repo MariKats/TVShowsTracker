@@ -5,7 +5,7 @@ Rails.application.routes.draw do
       resources :seasons, only: [:index, :create, :show, :destroy]
       resources :episodes, only: [:index, :create, :update, :show, :destroy]
       post '/auth', to: 'auth#create'
-      # get '/shows/:id/seasons', to: 'shows#get_seasons'
+      get '/current_user', to: 'auth#show'
     end
   end
 end

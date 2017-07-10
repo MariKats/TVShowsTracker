@@ -1,5 +1,5 @@
 class Api::V1::ShowsController < ApplicationController
-  # before_action :authorize_user!
+  before_action :authorize_user!
 
   def index
     shows = Show.all
@@ -13,6 +13,7 @@ class Api::V1::ShowsController < ApplicationController
 
   def create
     show = Show.find_or_create_by(show_params)
+    user_show = UserShow.find_or_create_by(show_id: show.id, user_id: @current_user.id)
     render json: show
   end
 
