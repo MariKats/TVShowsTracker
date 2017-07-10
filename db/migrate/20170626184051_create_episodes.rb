@@ -5,6 +5,7 @@ class CreateEpisodes < ActiveRecord::Migration[5.1]
       t.integer :season_number
       t.integer :number
       t.string :name
+      t.integer :time
       t.boolean :watched, default: false
 
       t.timestamps
