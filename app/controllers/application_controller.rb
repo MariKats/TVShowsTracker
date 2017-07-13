@@ -4,25 +4,32 @@ class ApplicationController < ActionController::API
   #
   # def authorize_user!
   #   if !current_user.present?
-  #     render json: {error: 'Authorization Invalid'}
+  #     render json: {error: 'No user id present'}
   #   end
   # end
   #
   # def current_user
-  #   decoded = decode(token)
-  #   if decoded.present?
-  #     @current_user ||= User.find_by(id: decoded.first['user_id'] )
-  #   end
+  #   @current_user ||= User.find_by(id: user_id)
   # end
   #
+  # def user_id
+  #   decoded_token.first['user_id']
+  # end
   #
-  # def decode(token)
-  #   JWT.decode(token, ENV['JWT_SECRET'], true, {algorithm: "HS256"})
-  #   rescue JWT::DecodeError
-  #     return nil
+  # def decoded_token
+  #   if token
+  #     begin
+  #       JWT.decode(token, ENV['JWT_SECRET'], true, {algorithm: false})
+  #     rescue JWT::DecodeError
+  #       return [{}]
+  #     end
+  #   else
+  #     [{}]
+  #   end
   # end
   #
   # def token
   #   request.headers['Authorization']
   # end
+
 end
